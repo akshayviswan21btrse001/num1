@@ -1,0 +1,47 @@
+# Python program for the above approach
+# Structure of a Tree Node
+
+
+class node:
+	def __init__(self, data):
+		self.left = None
+		self.right = None
+		self.data = data
+
+		
+# Function to get the count of nodes
+# in complete binary tree
+def totalNodes(root):
+# Base case
+	if(root == None):
+		return 0
+
+	# Find the left height and the
+	# right heights
+	l = totalNodes(root.left)
+	r = totalNodes(root.right)
+
+	return 1 + l + r
+
+
+# Helper Function to allocate a new node
+# with the given data
+def newNode(data):
+	Node = node(data)
+	return Node
+
+
+# Driver code
+root = newNode(1)
+root.left = newNode(2)
+root.right = newNode(3)
+root.left.left = newNode(4)
+root.left.right = newNode(5)
+root.right.left = newNode(9)
+root.right.right = newNode(8)
+root.left.left.left = newNode(6)
+root.left.left.right = newNode(7)
+
+print(totalNodes(root))
+
+# This code is contributed by Yash Agarwal(yashagarwal2852002)
